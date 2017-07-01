@@ -1,0 +1,12 @@
+-Xms256m
+-Xmx384m
+
+##################################
+-XX:+UseParNewGC
+-XX:+UseConcMarkSweepGC
+-XX:CMSInitiatingOccupancyFraction=75
+-XX:+UseCMSInitiatingOccupancyOnly
+-XX:+DisableExplicitGC
+-Djava.awt.headless=true
+-Dfile.encoding=UTF-8
+-XX:+HeapDumpOnOutOfMemoryError

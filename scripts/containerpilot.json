@@ -1,0 +1,26 @@
+{
+    "consul": "consul:8500",
+    "services": [
+      {
+         "name": "elasticsearch",
+         "port": 9200,
+         "health": "curl -o /dev/null --fail -s http://localhost:9200/_cluster/health",
+         "poll": 10,
+         "ttl": 30
+      },
+      {
+        "name": "kibana",
+        "port": 5601,
+        "health": "curl -o /dev/null --fail -s http://localhost:5601/",
+        "poll": 10,
+        "ttl": 30
+      },
+      {
+        "name": "logstash",
+        "port": 9600,
+        "health": "curl -o /dev/null --fail -s http://localhost:9600/",
+        "poll": 10,
+        "ttl": 30
+      }
+    ]
+}
