@@ -10,15 +10,17 @@ filter {
     match => { "message" => "<[\d]+>[A-Za-z]{3}[\s]+[\d]+\s[\d|:]+\s(?<containerId>[a-z0-9]{12})\[[\d]+\]:(?<log>.*)"}
   }
 
-  mutate {
-    remove_field => [ "message" ]
-  }
-
   json {
     source => "log"
     tag_on_failure => "nonjsonlog"
     target => "log-json"
     remove_field => [ "log" ]
+  }
+
+  if !("_grokparsefailure" in [tags]) {
+    mutate {
+      remove_field => [ "message" ]
+    }
   }
 }
 

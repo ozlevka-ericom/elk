@@ -60,6 +60,8 @@ COPY config/elasticsearch.yml /opt/elasticsearch/config/elasticsearch.yml
 COPY config/jvm.options /opt/$LOGSTASH_NAME-$LOGSTASH_VERSION/config/jvm.options
 ADD config/logstash.json /etc/$LOGSTASH_NAME/$LOGSTASH_NAME.json
 ADD scripts /scripts
+COPY config/templates.json /opt/config/templates.json
+COPY scripts/create-indexes.js /opt/kibana/create-indexes.js
 
 # Specify Volume
 VOLUME ["/var/lib/elasticsearch"]
